@@ -1,12 +1,17 @@
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 import java.util.Random;
 
 class Programa {
+
 	public static void main(String[] args) {
 		AdvinhaNum();
 	}
 
 	public static void AdvinhaNum(){
+			List<Integer> tent = new ArrayList<Integer>();
 		Scanner in = new Scanner(System.in);
 		System.out.println("Digite o limite para o número que será gerado: ");
 		int limite=Integer.parseInt(in.nextLine());
@@ -17,12 +22,16 @@ class Programa {
         int s = Integer.parseInt(in.nextLine());
         boolean repete=true;
 
-        while(repete){
+        while(repete) {
         	MaiorMenor(s,num);
         	System.out.println("Tente Novamente");
             s = Integer.parseInt(in.nextLine());
+            tent.add(s);
         	repete=Teste(s,num);
         }
+        System.out.println("Você precisou de "+tent.size()+" tentativas");
+        System.out.println("Números que você digitou: ");
+        tent.forEach(item->System.out.println(item));
 	}
 	public static void MaiorMenor(int numAdv, int numGer){
 		if(numAdv>numGer){
